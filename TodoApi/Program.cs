@@ -68,7 +68,7 @@ async Task GetTaskById(ToDoDbContext dbContext, HttpContext context, int id)
 }
 
 async Task AddTask(ToDoDbContext dbContext, HttpContext context, Item item)
-{
+{   item.IsComplete=false;
     dbContext.Items.Add(item);
     await dbContext.SaveChangesAsync();
     context.Response.StatusCode = StatusCodes.Status201Created;
